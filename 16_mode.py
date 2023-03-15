@@ -35,9 +35,9 @@ def mode(nums):
     
     else:
         dict_nums = {}
-
+        
         for i in nums:
-            if i in dict_nums:
+            if i  not in dict_nums:
                 dict_nums[i] += 1
             else:
                 dict_nums[i] = 1
