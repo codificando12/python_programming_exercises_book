@@ -25,7 +25,7 @@ Prerequisite concepts: for loops, range(), print(), end keyword argument for pri
 
 def drawRectangle(width, height):
     if height <= 0 or width <= 0:
-        print("The rectangle can't be drawn")
+        return 
     else: 
 
         for i in range(height):
