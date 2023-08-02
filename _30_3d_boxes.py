@@ -20,6 +20,6 @@ def drawBox(width, length, height):
         print(" " * (length - 1) + d_line + " " * (width - 2) + d_line + " " * space + v_line)
         length -= 1
         space += 1
-    print(corner + (width - 2) * h_line + corner)
+    print(corner + (width - 2) * h_line + corner + " " * (width - 2) + corner)
 if __name__ == "__main__":
     drawBox(4, 2, 0)
