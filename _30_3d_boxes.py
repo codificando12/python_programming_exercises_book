@@ -11,15 +11,16 @@ def drawBox(width, length, height):
     d_line = "/"
     corner = "+"
 
-    top_border = " " * (length + 1)+ corner + (width - 2) * h_line + corner
-    second_line = " " * length + d_line + " " * (width - 2) + d_line + v_line
+    top_border = " " * (length + 2)+ corner + (width) * h_line + corner
+    second_line = " " * (length + 1) + d_line + " " * (width) + d_line + v_line
     print(top_border)
     print(second_line)
     space = 1
-    for i in range(length - 1):
-        print(" " * (length - 1) + d_line + " " * (width - 2) + d_line + " " * space + v_line)
+    for i in range(length):
+        print(" " * (length) + d_line + " " * (width) + d_line + " " * space + v_line)
         length -= 1
         space += 1
-    print(corner + (width - 2) * h_line + corner + " " * (width - 2) + corner)
+    print(corner + (width) * h_line + corner + " " * (width) + corner)
+    print(" " * (width + width + 1) + d_line)
 if __name__ == "__main__":
-    drawBox(4, 2, 0)
+    drawBox(2, 1, 2)
