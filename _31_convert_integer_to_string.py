@@ -19,8 +19,33 @@ Prerequisite concepts: dictionaries, while loops, string concatenation, integer 
 def convertIntToStr(integerNum):
     
     INT_TO_STR = {0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7", 8: "8", 9: "9"}
-    final_str = ""
+    
+    negative = ""
+    string = ""
+    if integerNum == 0:
+        string = INT_TO_STR[0]
+        return string
+    elif integerNum < 0:
+        negative += "-"
+        integerNum *= -1
+        while integerNum > 0:
+            number_convert = integerNum % 10
+            if number_convert in INT_TO_STR:
+                string += INT_TO_STR[number_convert]
+            integerNum = integerNum // 10
+    else:
+        while integerNum > 0:
+            number_convert = integerNum % 10
+            if number_convert in INT_TO_STR:
+                string += INT_TO_STR[number_convert]
+            integerNum = integerNum // 10
+    if negative != "":
+        string += negative
+    return string[::-1]
+
+for i in range(-10000, 10000):
+    assert convertIntToStr(i) == str(i)
+
     
 
-if __name__ == "__main__":
-    print(convertIntToStr(10))
+    
