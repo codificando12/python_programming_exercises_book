@@ -30,12 +30,19 @@ Prerequisite concepts: strings, str(), in operator, index(), slices, string conc
 
 def commaFormat(num):
     
-    num = str(num)
-    decimal_dot = num.index(".")
-    decimal_num = num[decimal_dot:]
-    add_coma_num = num[: decimal_dot]
+    str_num = str(num)
+    if "." in str_num:
+        decimal_dot = str_num.index(".")
+        decimal_num = str_num[decimal_dot:]
+        add_coma_num = str_num[: decimal_dot]
+    else:
+        decimal_num = ""
+        add_coma_num = str_num
     added_comma_num = ""
-    if len(add_coma_num) > 3:
+    if num < 1000:
+        return str_num
+    
+    elif len(add_coma_num) > 3:
         comma_index = 0
         for i in add_coma_num[::-1]:
             if comma_index < 3:
@@ -48,19 +55,19 @@ def commaFormat(num):
                 comma_index += 1
     return added_comma_num[::-1] + decimal_num
 
-# assert commaFormat(1) == '1'
+assert commaFormat(1) == '1'
 
-# assert commaFormat(10) == '10'
+assert commaFormat(10) == '10'
 
-# assert commaFormat(100) == '100'
+assert commaFormat(100) == '100'
 
-# assert commaFormat(1000) == '1,000'
+assert commaFormat(1000) == '1,000'
 
-# assert commaFormat(10000) == '10,000'
+assert commaFormat(10000) == '10,000'
 
-# assert commaFormat(100000) == '100,000'
+assert commaFormat(100000) == '100,000'
 
-# assert commaFormat(1000000) == '1,000,000'
+assert commaFormat(1000000) == '1,000,000'
 
 assert commaFormat(1234567890) == '1,234,567,890'
 
