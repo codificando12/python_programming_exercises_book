@@ -48,10 +48,46 @@ Prerequisite concepts: strings, for loops, range(), len(), upper(), isalpha(), l
 
 def getTitleCase(sentence):
     
+    sentence = sentence.lower()
     result = ""
+    upper_case = 0
     for i in sentence:
-        if i.isalpha():
+        if i.isalpha() and upper_case == 0:
+            upper = i.upper()
+            result += upper
+            upper_case = 1
+        elif i.isalpha() and upper_case == 1:
             result += i
-    print(result)
+        else:
+            upper_case = 0
+            result += i
+    
+    return result
+
+assert getTitleCase('Hello, world!') == 'Hello, World!'
+
+assert getTitleCase('HELLO') == 'Hello'
+
+assert getTitleCase('hello') == 'Hello'
+
+assert getTitleCase('hElLo') == 'Hello'
+
+assert getTitleCase('') == ''
+
+assert getTitleCase('abc123xyz') == 'Abc123Xyz'
+
+assert getTitleCase('cat dog RAT') == 'Cat Dog Rat'
 
 assert getTitleCase('cat,dog,RAT') == 'Cat,Dog,Rat'
+
+import random
+
+random.seed(42)
+
+chars = list('abcdefghijklmnopqrstuvwxyz1234567890 ,.')
+
+for i in range(1000):
+
+    random.shuffle(chars)
+
+    assert getTitleCase(''.join(chars)) == ''.join(chars).title()
