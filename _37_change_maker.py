@@ -40,10 +40,13 @@ def makeChange(num):
 
     while total > 0:
         if total // 25 > 0:
-            dic['quarters'] += 1
-            total -= 25
-
+            if 'quarters' not in dic:
+                dic['quarters'] = 1
+                total -= 25
+            else:
+                dic['quarters'] += 1
+                total -= 25
 
     print(dic)
 
-makeChange(25)
+makeChange(125)
