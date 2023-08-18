@@ -33,20 +33,34 @@ assert makeChange(100) == {'quarters': 4}
 assert makeChange(125) == {'quarters': 5}"""
 
 def makeChange(num):
-    pass
     dic = {}
 
-    total = num
+    
+    if num >= 25:
+        dic['quarters'] = num // 25
+        num = num % 25
+    if num >= 10:
+        dic['dimes'] = num // 10
+        num = num % 10
+        
+    if num >= 5:
+        dic['nickels'] = num // 5
+        num = num % 5
+    
+    if num >= 1:
+        dic['pennies'] = num // 1
+            
+    return dic
 
-    while total > 0:
-        if total // 25 > 0:
-            if 'quarters' not in dic:
-                dic['quarters'] = 1
-                total -= 25
-            else:
-                dic['quarters'] += 1
-                total -= 25
+assert makeChange(30) == {'quarters': 1, 'nickels': 1}
 
-    print(dic)
+assert makeChange(10) == {'dimes': 1}
 
-makeChange(125)
+assert makeChange(57) == {'quarters': 2, 'nickels': 1, 'pennies': 2}
+
+assert makeChange(100) == {'quarters': 4}
+
+assert makeChange(125) == {'quarters': 5}
+
+makeChange(100000000000)
+
